@@ -10,9 +10,11 @@ Sub MoveRowBasedOnCellValue()
     Dim K As Long
     Dim source As String
     Dim destiny As String
+    Dim keyWord As String
     Dim keyWordRange As String
+    keyWord = "CSYDR"
     source = "PROPUESTA HORARIO"
-    destiny = "IA (2)"
+    destiny = keyWord & " (2)"
     keyWordRange = "H7:H"
     I = Worksheets(source).UsedRange.Rows.Count
     J = 7
@@ -23,7 +25,7 @@ Sub MoveRowBasedOnCellValue()
     On Error Resume Next
     Application.ScreenUpdating = True
     For K = 1 To xRg.Count
-        If CStr(xRg(K).Value) = "IA" Then
+        If CStr(xRg(K).Value) = keyWord Then
             xRg(K).EntireRow.Copy Destination:=Worksheets(destiny).Range("A" & J)
             J = J + 1
         End If
